@@ -18,7 +18,11 @@ class Hangman extends Component{
         this.handleGuess = this.handleGuess.bind(this);
     }
     guessedWord = () => {
-        return this.state.answer.split("").map(ltr => (this.state.guessed.has(ltr) ? ltr : ""))
+        return this.state.answer
+        .split(" ")
+        .map((ltr) => {
+            return this.state.guessed.has(ltr) ? ltr : ""
+        })
     }
     handleGuess = (evt) => {
         let ltr = evt.target.value;
@@ -30,7 +34,7 @@ class Hangman extends Component{
     generateButtons(){
         return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
             <button
-                value="ltr"
+                value={ltr}
                 onClick={this.handleGuess}
                 disabled={this.state.guessed.has(ltr)}
             >
