@@ -20,12 +20,10 @@ class Hangman extends Component{
     guessedWord = () => {
         return this.state.answer
         .split(" ")
-        .map((ltr) => {
-            return this.state.guessed.has(ltr) ? ltr : ""
-        })
+        .map(ltr => (this.state.guessed.has(ltr) ? ltr : "_"))
     }
     handleGuess = (evt) => {
-        let ltr = evt.target.value;
+        let ltr = evt.target.value
         this.setState(st => ({
             guessed: st.guessed.add(ltr),
             nWrong: st.nWrong + (st.answer.includes(ltr) ? 0 : 1)
