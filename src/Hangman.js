@@ -17,10 +17,8 @@ class Hangman extends Component{
         this.state = {nWrong: 0, guessed: new Set(), answer: "apple"};
         this.handleGuess = this.handleGuess.bind(this);
     }
-    guessedWord(){
-        return this.state.answer
-        .split("")
-        .map(ltr => (this.state.guessed.has(ltr) ? ltr : ""))
+    guessedWord = () => {
+        return this.state.answer.split("").map(ltr => (this.state.guessed.has(ltr) ? ltr : ""))
     }
     handleGuess = (evt) => {
         let ltr = evt.target.value;
@@ -43,6 +41,7 @@ class Hangman extends Component{
     render(){
         return(
             <div className="Hangman">
+                {/* go through code walk through tomorrow and see what you are missing */}
                 <h1>Hangman</h1>
                 <img src={this.props.images[this.state.nWrong]}/>
                 <p className="Hangman-word">{this.guessedWord()}</p>
